@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiments — Science Lab Management</title>
+    <link rel="stylesheet" href="exp.css">
+</head>
+<body>
+
+    <!-- TOP NAV -->
+    <nav class="topnav">
+        <button class="back-btn" onclick="window.location.href='std.html'">← Back</button>
+        <span class="nav-title">Experiments</span>
+        <span></span>
+    </nav>
+
+    <section class="page-wrap">
+
+        <!-- PAGE HEADER -->
+        <div class="page-header">
+            <span class="page-icon">🧪</span>
+            <h1>Experiments</h1>
+            <p class="subtitle">Browse, search, and explore all lab experiments</p>
+        </div>
+
+        <!-- SEARCH + FILTER -->
+        <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search experiments..." oninput="filterCards()">
+        </div>
+
+        <div class="filter-row" id="filterRow">
+            <button class="filter-btn active" onclick="setFilter('All', this)">All</button>
+            <button class="filter-btn" onclick="setFilter('Easy', this)">Easy</button>
+            <button class="filter-btn" onclick="setFilter('Medium', this)">Medium</button>
+            <button class="filter-btn" onclick="setFilter('Hard', this)">Hard</button>
+        </div>
+
+        <!-- EXPERIMENT CARDS -->
+        <div class="exp-grid" id="expGrid">
+
+            <!-- 1 -->
+            <div class="exp-card" data-category="Chemistry" data-diff="Easy">
+                <div class="card-top">
+                    <span class="tag tag-chem">Chemistry</span>
+                    <span class="diff diff-easy">Easy</span>
+                </div>
+                <div class="card-icon">⚗️</div>
+                <h3>Acid-Base Titration</h3>
+                <p>Determine the concentration of an acid or base solution using a standard solution and a pH indicator.</p>
+                <div class="card-meta">
+                    <span>⏱ 45 min</span>
+                    <span>👥 2–3 students</span>
+                </div>
+                <button class="view-btn" onclick="openModal('Acid-Base Titration','Chemistry','Easy','45 min','⚗️','Determine the concentration of an unknown acid or base solution using a standard solution and a pH indicator. Learn about neutralization reactions and equivalence points.',['Burette','Conical flask','Phenolphthalein indicator','0.1M NaOH solution','Unknown HCl solution','Safety goggles'],['Fill the burette with 0.1M NaOH and note the initial reading.','Pipette 25 ml of the unknown HCl into a clean conical flask.','Add 2–3 drops of phenolphthalein indicator to the flask.','Titrate slowly, swirling continuously, until the solution turns pale pink.','Record the final burette reading and calculate the volume of NaOH used.','Use the formula C1V1 = C2V2 to find the concentration of HCl.','Repeat twice more for concordant results (within 0.1 ml of each other).'])">View Details →</button>
+            </div>
+
+            <!-- 2 -->
+            <div class="exp-card" data-category="Chemistry" data-diff="Medium">
+                <div class="card-top">
+                    <span class="tag tag-chem">Chemistry</span>
+                    <span class="diff diff-med">Medium</span>
+                </div>
+                <div class="card-icon">🔥</div>
+                <h3>Flame Test</h3>
+                <p>Identify metal ions in unknown compounds by observing the colours they produce in a Bunsen flame.</p>
+                <div class="card-meta">
+                    <span>⏱ 30 min</span>
+                    <span>👥 2 students</span>
+                </div>
+                <button class="view-btn" onclick="openModal('Flame Test','Chemistry','Medium','30 min','🔥','Identify unknown metal ions by introducing samples into a flame and observing the characteristic emission colours produced by excited electrons returning to ground state.',['Nichrome wire loop','Bunsen burner','Dilute hydrochloric acid','Unknown salt samples (Li, Na, K, Ca, Cu, Ba)','Safety goggles','Heatproof mat'],['Clean the wire loop by dipping in dilute HCl and heating until no colour appears.','Dip the clean loop into the first unknown sample.','Hold the loop in the hottest (blue) part of the flame.','Observe and record the colour produced.','Clean the loop thoroughly with HCl between each sample.','Repeat for all unknowns and identify each ion using the reference colour chart.','Record observations in a results table.'])">View Details →</button>
+            </div>
+
+            <!-- 3 -->
+            <div class="exp-card" data-category="Chemistry" data-diff="Easy">
+                <div class="card-top">
+                    <span class="tag tag-chem">Chemistry</span>
+                    <span class="diff diff-easy">Easy</span>
+                </div>
+                <div class="card-icon">🧲</div>
+                <h3>Electrolysis of Water</h3>
+                <p>Split water into hydrogen and oxygen gases using electrolysis and collect each gas for testing.</p>
+                <div class="card-meta">
+                    <span>⏱ 40 min</span>
+                    <span>👥 2 students</span>
+                </div>
+                <button class="view-btn" onclick="openModal('Electrolysis of Water','Chemistry','Easy','40 min','🧲','Decompose water into its constituent elements — hydrogen and oxygen — using direct current, and confirm the identity of each gas collected at the electrodes.',['Electrolysis apparatus (Hofmann voltameter or simple setup)','Dilute sulfuric acid (H₂SO₄) solution','DC power supply (6V)','Carbon or platinum electrodes','Connecting wires','Glowing splint & lit splint for gas tests'],['Fill the apparatus with dilute H₂SO₄ solution.','Connect the electrodes to the DC power supply (+ to anode, − to cathode).','Switch on the supply and observe bubble formation at both electrodes.','Allow gas to collect in both tubes for 10–15 minutes.','Test the gas at the cathode: insert a lit splint — it should produce a squeaky pop (hydrogen).','Test the gas at the anode: insert a glowing splint — it should relight (oxygen).','Record the volume ratio of H₂ : O₂ and compare with the theoretical 2:1 ratio.'])">View Details →</button>
+            </div>
+
+            <!-- 4 -->
+            <div class="exp-card" data-category="Chemistry" data-diff="Medium">
+                <div class="card-top">
+                    <span class="tag tag-chem">Chemistry</span>
+                    <span class="diff diff-med">Medium</span>
+                </div>
+                <div class="card-icon">🌡️</div>
+                <h3>Enthalpy of Neutralisation</h3>
+                <p>Measure the heat released when a strong acid and strong base react, and calculate the enthalpy change.</p>
+                <div class="card-meta">
+                    <span>⏱ 50 min</span>
+                    <span>👥 3 students</span>
+                </div>
+                <button class="view-btn" onclick="openModal('Enthalpy of Neutralisation','Chemistry','Medium','50 min','🌡️','Determine the molar enthalpy of neutralisation by measuring the temperature change when known volumes of a strong acid and strong base are mixed in an insulated calorimeter.',['Polystyrene cup (calorimeter)','Thermometer (0.1°C precision)','1.0M HCl solution (50 ml)','1.0M NaOH solution (50 ml)','Measuring cylinder','Stirring rod','Balance'],['Measure 50 ml of 1.0M HCl into the polystyrene cup.','Record the initial temperature of the acid every 30 seconds for 2 minutes.','Measure 50 ml of 1.0M NaOH in a separate cylinder and record its temperature.','At t = 2 min, quickly add the NaOH to the HCl and stir gently.','Record the temperature every 30 seconds for 5 minutes.','Plot a temperature–time graph and extrapolate to find the maximum temperature rise (ΔT).','Calculate q = mcΔT, then ΔH per mole using moles of water formed.'])">View Details →</button>
+            </div>
+
+            <!-- 5 -->
+            <div class="exp-card" data-category="Chemistry" data-diff="Hard">
+                <div class="card-top">
+                    <span class="tag tag-chem">Chemistry</span>
+                    <span class="diff diff-hard">Hard</span>
+                </div>
+                <div class="card-icon">🔵</div>
+                <h3>Chromatography of Inks</h3>
+                <p>Separate dye mixtures in different inks using paper chromatography and calculate Rf values.</p>
+                <div class="card-meta">
+                    <span>⏱ 55 min</span>
+                    <span>👥 2 students</span>
+                </div>
+                <button class="view-btn" onclick="openModal('Chromatography of Inks','Chemistry','Hard','55 min','🔵','Separate and identify the dye components present in different coloured inks using paper chromatography, and calculate Rf values to identify unknown dyes.',['Chromatography paper strips','Pencil & ruler','Capillary tubes or fine brush','Sample inks (black, blue, green, unknown)','Solvent (ethanol or water)','Beaker & lid or cling film','UV lamp (if using invisible dyes)'],['Draw a pencil baseline 1.5 cm from the bottom of each strip.','Spot a small amount of each ink sample on the baseline using a capillary tube; allow to dry.','Pour solvent into the beaker to a depth of 1 cm (below the baseline).','Hang the strip so only the solvent touches it, not the spots; cover the beaker.','Allow the solvent to travel to within 1 cm of the top, then remove and mark the solvent front.','Allow to dry; identify separated spots by colour or UV lamp.','Calculate Rf = distance moved by spot ÷ distance moved by solvent front for each component.'])">View Details →</button>
+            </div>
+
+            <!-- 6 -->
+            <div class="exp-card" data-category="Chemistry" data-diff="Hard">
+                <div class="card-top">
+                    <span class="tag tag-chem">Chemistry</span>
+                    <span class="diff diff-hard">Hard</span>
+                </div>
+                <div class="card-icon">💧</div>
+                <h3>Preparation of a Salt</h3>
+                <p>Prepare pure crystals of copper(II) sulfate by reacting copper oxide with sulfuric acid, then crystallise.</p>
+                <div class="card-meta">
+                    <span>⏱ 70 min</span>
+                    <span>👥 2–3 students</span>
+                </div>
+                <button class="view-btn" onclick="openModal('Preparation of a Salt','Chemistry','Hard','70 min','💧','Prepare a pure sample of copper(II) sulfate crystals (CuSO₄·5H₂O) through the reaction of excess copper(II) oxide with dilute sulfuric acid, followed by filtration and crystallisation.',['Dilute sulfuric acid (H₂SO₄, 25 ml)','Copper(II) oxide powder (excess)','Evaporating basin','Bunsen burner & tripod','Filter funnel, paper & conical flask','Glass rod','Safety goggles & lab coat'],['Heat 25 ml of dilute H₂SO₄ gently in an evaporating basin (do not boil).','Add copper(II) oxide in small spatula amounts, stirring after each addition.','Continue adding CuO until no more dissolves (excess ensures all acid reacts).','Filter the hot mixture to remove excess CuO; collect the blue filtrate.','Transfer the filtrate to an evaporating basin and heat gently until the volume is halved.','Leave to cool slowly — blue crystals of CuSO₄·5H₂O will form.','Filter off the crystals, wash with a little cold distilled water, and dry between filter papers.'])">View Details →</button>
+            </div>
+
+        </div>
+
+        <!-- EMPTY STATE -->
+        <div class="empty-state" id="emptyState" style="display:none;">
+            <span>🔍</span>
+            <p>No experiments found for "<span id="emptyTerm"></span>"</p>
+        </div>
+
+    </section>
+
+    <!-- MODAL OVERLAY -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div class="modal-header">
+                <span class="modal-icon" id="mIcon"></span>
+                <div>
+                    <div class="modal-tags">
+                        <span class="tag" id="mTag"></span>
+                        <span class="diff" id="mDiff"></span>
+                    </div>
+                    <h2 id="mTitle"></h2>
+                    <span class="modal-time" id="mTime"></span>
+                </div>
+            </div>
+            <p id="mDesc" class="modal-desc"></p>
+            <div class="modal-section">
+                <h4>🧰 Materials Needed</h4>
+                <ul id="mMaterials"></ul>
+            </div>
+            <div class="modal-section">
+                <h4>📋 Procedure</h4>
+                <ol id="mSteps"></ol>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let activeFilter = 'All';
+
+        function setFilter(val, btn) {
+            activeFilter = val;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            filterCards();
+        }
+
+        function filterCards() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.exp-card');
+            let visible = 0;
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const desc = card.querySelector('p').textContent.toLowerCase();
+                const diff = card.dataset.diff;
+                const matchFilter = activeFilter === 'All' || diff === activeFilter;
+                const matchSearch = title.includes(query) || desc.includes(query);
+                if (matchFilter && matchSearch) {
+                    card.style.display = '';
+                    visible++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            const empty = document.getElementById('emptyState');
+            document.getElementById('emptyTerm').textContent = query || activeFilter;
+            empty.style.display = visible === 0 ? 'flex' : 'none';
+        }
+
+        function openModal(title, cat, diff, time, icon, desc, materials, steps) {
+            document.getElementById('mTitle').textContent = title;
+            document.getElementById('mIcon').textContent = icon;
+            document.getElementById('mTime').textContent = '⏱ ' + time;
+            document.getElementById('mDesc').textContent = desc;
+
+            // Tag colour
+            const tagEl = document.getElementById('mTag');
+            tagEl.textContent = cat;
+            tagEl.className = 'tag';
+            if (cat === 'Chemistry') tagEl.classList.add('tag-chem');
+            else if (cat === 'Physics') tagEl.classList.add('tag-phys');
+            else tagEl.classList.add('tag-bio');
+
+            // Diff colour
+            const diffEl = document.getElementById('mDiff');
+            diffEl.textContent = diff;
+            diffEl.className = 'diff';
+            if (diff === 'Easy') diffEl.classList.add('diff-easy');
+            else if (diff === 'Medium') diffEl.classList.add('diff-med');
+            else diffEl.classList.add('diff-hard');
+
+            // Materials
+            const matList = document.getElementById('mMaterials');
+            matList.innerHTML = materials.map(m => `<li>${m}</li>`).join('');
+
+            // Steps
+            const stepList = document.getElementById('mSteps');
+            stepList.innerHTML = steps.map(s => `<li>${s}</li>`).join('');
+
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    </script>
+
+</body>
+</html>

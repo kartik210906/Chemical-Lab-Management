@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Manage Schedule</title>
+
+<link rel="stylesheet" href="std.css">
+
+<style>
+
+.form-box{
+    background:white;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+input,
+select{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    margin-bottom:12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+
+label{
+    font-size:14px;
+    color:#555;
+}
+
+.add-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#4f46e5;
+    color:white;
+    cursor:pointer;
+    text-align:center;
+}
+
+.schedule-card{
+    background:white;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:12px;
+}
+
+.schedule-card h3{
+    margin-bottom:10px;
+}
+
+.schedule-card p{
+    font-size:14px;
+    margin-bottom:5px;
+    color:#555;
+}
+
+.delete-btn{
+    margin-top:10px;
+    padding:8px 12px;
+    border:none;
+    border-radius:8px;
+    background:red;
+    color:white;
+    cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section>
+
+<div>
+
+    <h1>Manage Schedule</h1>
+
+    <p class="subtitle">
+        Add laboratory schedules
+    </p>
+
+</div>
+
+<div class="form-box">
+
+    <input type="text"
+    id="subject"
+    placeholder="Experiment Name">
+
+    <input type="date"
+    id="date">
+
+    <label>Start Time</label>
+
+    <input type="time"
+    id="startTime">
+
+    <label>End Time</label>
+
+    <input type="time"
+    id="endTime">
+
+    <select id="batch">
+
+        <option value="">Select Batch</option>
+
+        <option>Batch A1</option>
+        <option>Batch A2</option>
+        <option>Batch B1</option>
+        <option>Batch B2</option>
+
+    </select>
+
+    <input type="text"
+    id="lab"
+    placeholder="Lab Number">
+
+    <button class="add-btn"
+    onclick="addSchedule()">
+
+        Add Schedule
+
+    </button>
+
+</div>
+
+<div id="scheduleList"></div>
+
+</section>
+
+<script>
+
+let schedules =
+JSON.parse(localStorage.getItem("schedules")) || [];
+
+displaySchedules();
+
+function addSchedule(){
+
+    let subject =
+    document.getElementById("subject").value;
+
+    let date =
+    document.getElementById("date").value;
+
+    let startTime =
+    document.getElementById("startTime").value;
+
+    let endTime =
+    document.getElementById("endTime").value;
+
+    let batch =
+    document.getElementById("batch").value;
+
+    let lab =
+    document.getElementById("lab").value;
+
+    if(subject=="" ||
+       date=="" ||
+       startTime=="" ||
+       endTime=="" ||
+       batch=="" ||
+       lab==""){
+
+        alert("Fill all fields");
+
+        return;
+
+    }
+
+    schedules.push({
+
+        subject:subject,
+        date:date,
+        startTime:startTime,
+        endTime:endTime,
+        batch:batch,
+        lab:lab
+
+    });
+
+    localStorage.setItem(
+    "schedules",
+    JSON.stringify(schedules)
+    );
+
+    displaySchedules();
+
+}
+
+function displaySchedules(){
+
+    let list =
+    document.getElementById("scheduleList");
+
+    list.innerHTML = "";
+
+    schedules.forEach((s,index)=>{
+
+        list.innerHTML += `
+
+        <div class="schedule-card">
+
+            <h3>${s.subject}</h3>
+
+            <p><b>Date:</b> ${s.date}</p>
+
+            <p>
+            <b>Time:</b>
+            ${s.startTime} - ${s.endTime}
+            </p>
+
+            <p><b>Batch:</b> ${s.batch}</p>
+
+            <p><b>Lab:</b> ${s.lab}</p>
+
+            <button class="delete-btn"
+            onclick="deleteSchedule(${index})">
+
+                Delete
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+function deleteSchedule(index){
+
+    schedules.splice(index,1);
+
+    localStorage.setItem(
+    "schedules",
+    JSON.stringify(schedules)
+    );
+
+    displaySchedules();
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apparatus Manual</title>
+    <link rel="stylesheet" href="std.css">
+
+    <style>
+
+        .search-box{
+            margin-bottom: 20px;
+        }
+
+        .search-box input{
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        .apparatus-card{
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+
+        .apparatus-card h3{
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .apparatus-card p{
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .tag{
+            display: inline-block;
+            margin-top: 10px;
+            background: #f0f0f0;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<section>
+
+    <div>
+        <h1>Apparatus Manual</h1>
+        <p class="subtitle">
+            Learn how to use laboratory apparatus safely
+        </p>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search apparatus...">
+    </div>
+
+    <div class="k2" id="apparatusList">
+
+    <div class="apparatus-card">
+        <h3>🔬 Microscope</h3>
+        <p><b>Purpose:</b> Used to observe microscopic specimens and cells.</p>
+        <p><b>How to Use:</b> Place the slide on the stage, adjust the objective lens, and slowly focus using the coarse and fine knobs.</p>
+        <p><b>Safety:</b> Clean lenses with lens paper only and switch off after use.</p>
+        <span class="tag">Optical Instrument</span>
+    </div>
+
+    <div class="apparatus-card">
+        <h3>⚗️ Burette</h3>
+        <p><b>Purpose:</b> Used in titration to deliver accurate liquid volumes.</p>
+        <p><b>How to Use:</b> Clamp vertically, fill carefully, remove air bubbles, and record readings at eye level.</p>
+        <p><b>Safety:</b> Wash with distilled water after use.</p>
+        <span class="tag">Volumetric Apparatus</span>
+    </div>
+
+    <div class="apparatus-card">
+        <h3>🧪 Pipette</h3>
+        <p><b>Purpose:</b> Transfers fixed liquid volumes accurately.</p>
+        <p><b>How to Use:</b> Use a pipette filler, draw liquid slowly, and release carefully into the container.</p>
+        <p><b>Safety:</b> Never pipette using mouth suction.</p>
+        <span class="tag">Measurement</span>
+    </div>
+
+    <div class="apparatus-card">
+        <h3>🥼 Beaker</h3>
+        <p><b>Purpose:</b> Used for holding, mixing, and heating chemicals.</p>
+        <p><b>How to Use:</b> Pour liquids carefully and place on a wire gauze while heating.</p>
+        <p><b>Safety:</b> Do not use cracked beakers.</p>
+        <span class="tag">Container</span>
+    </div>
+
+    <div class="apparatus-card">
+        <h3>🔥 Bunsen Burner</h3>
+        <p><b>Purpose:</b> Produces flame for heating experiments.</p>
+        <p><b>How to Use:</b> Connect gas supply, ignite carefully, and adjust air hole for flame control.</p>
+        <p><b>Safety:</b> Keep flammable materials away.</p>
+        <span class="tag">Heating Equipment</span>
+    </div>
+
+    <div class="apparatus-card">
+        <h3>⚖️ Electronic Balance</h3>
+        <p><b>Purpose:</b> Measures mass with high precision.</p>
+        <p><b>How to Use:</b> Switch on, press tare button, and place sample gently.</p>
+        <p><b>Safety:</b> Avoid spilling chemicals on the balance surface.</p>
+        <span class="tag">Measurement Instrument</span>
+    </div>
+
+    <div class="apparatus-card">
+        <h3>🌡️ Thermometer</h3>
+        <p><b>Purpose:</b> Measures temperature changes during experiments.</p>
+        <p><b>How to Use:</b> Immerse bulb properly without touching container walls.</p>
+        <p><b>Safety:</b> Handle carefully to prevent breakage.</p>
+        <span class="tag">Temperature Device</span>
+    </div>
+
+    <div class="apparatus-card">
+        <h3>🧫 Petri Dish</h3>
+        <p><b>Purpose:</b> Used for culturing bacteria and microorganisms.</p>
+        <p><b>How to Use:</b> Sterilize before use and keep covered during experiments.</p>
+        <p><b>Safety:</b> Dispose biological samples properly.</p>
+        <span class="tag">Biology Equipment</span>
+    </div>
+
+    <div class="apparatus-card">
+        <h3>🧲 Magnetic Stirrer</h3>
+        <p><b>Purpose:</b> Automatically mixes solutions using magnetic rotation.</p>
+        <p><b>How to Use:</b> Place stir bar inside liquid and adjust speed gradually.</p>
+        <p><b>Safety:</b> Keep electrical surface dry.</p>
+        <span class="tag">Mixing Equipment</span>
+    </div>
+
+    <div class="apparatus-card">
+        <h3>💧 Wash Bottle</h3>
+        <p><b>Purpose:</b> Used for rinsing apparatus with distilled water.</p>
+        <p><b>How to Use:</b> Gently squeeze bottle to direct water stream.</p>
+        <p><b>Safety:</b> Label contents correctly before use.</p>
+        <span class="tag">Cleaning Equipment</span>
+    </div>
+
+    <div class="apparatus-card">
+        <h3>🧬 Centrifuge</h3>
+        <p><b>Purpose:</b> Separates substances by rapid spinning.</p>
+        <p><b>How to Use:</b> Balance tubes equally before starting machine.</p>
+        <p><b>Safety:</b> Never open lid while rotating.</p>
+        <span class="tag">Separation Equipment</span>
+    </div>
+
+    <div class="apparatus-card">
+        <h3>🧯 Fume Hood</h3>
+        <p><b>Purpose:</b> Removes harmful chemical fumes from workspace.</p>
+        <p><b>How to Use:</b> Perform reactions inside hood with glass shield lowered.</p>
+        <p><b>Safety:</b> Ensure ventilation is running before experiment.</p>
+        <span class="tag">Safety Equipment</span>
+    </div>
+
+</div>
+
+</section>
+
+<script>
+
+    const searchInput = document.getElementById("searchInput");
+    const cards = document.querySelectorAll(".apparatus-card");
+
+    searchInput.addEventListener("keyup", function(){
+
+        const value = searchInput.value.toLowerCase();
+
+        cards.forEach(card => {
+
+            const text = card.innerText.toLowerCase();
+
+            if(text.includes(value)){
+                card.style.display = "block";
+            }
+            else{
+                card.style.display = "none";
+            }
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

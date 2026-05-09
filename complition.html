@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Experiment Completion Tracker</title>
+
+<link rel="stylesheet" href="std.css">
+
+<style>
+
+.form-box,
+.track-card{
+    background:white;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:15px;
+}
+
+input,
+select{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    margin-bottom:12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+
+.add-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#4f46e5;
+    color:white;
+    cursor:pointer;
+}
+
+.track-card h3{
+    margin-bottom:10px;
+}
+
+.track-card p{
+    font-size:14px;
+    margin-bottom:5px;
+    color:#555;
+}
+
+.status{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:8px;
+    font-size:12px;
+    margin-top:10px;
+    background:#fff3cd;
+    color:#856404;
+}
+
+.completed{
+    background:#e8f5e9;
+    color:#2e7d32;
+}
+
+.pending{
+    background:#ffebee;
+    color:#c62828;
+}
+
+.delete-btn{
+    margin-top:10px;
+    padding:8px 12px;
+    border:none;
+    border-radius:8px;
+    background:red;
+    color:white;
+    cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section>
+
+<div>
+
+    <h1>Experiment Completion Tracker</h1>
+
+    <p class="subtitle">
+        Track experiment completion status
+    </p>
+
+</div>
+
+<div class="form-box">
+
+    <select id="batch">
+
+        <option value="">Select Batch</option>
+
+        <option>Batch A1</option>
+        <option>Batch A2</option>
+        <option>Batch B1</option>
+        <option>Batch B2</option>
+
+    </select>
+
+    <input type="text"
+    id="experiment"
+    placeholder="Experiment Name">
+
+    <input type="date"
+    id="date">
+
+    <select id="status">
+
+        <option value="">Select Status</option>
+
+        <option>Completed</option>
+        <option>Pending</option>
+        <option>In Progress</option>
+
+    </select>
+
+    <button class="add-btn"
+    onclick="addTracker()">
+
+        Add Record
+
+    </button>
+
+</div>
+
+<div id="trackerList"></div>
+
+</section>
+
+<script>
+
+let trackerData =
+JSON.parse(localStorage.getItem("tracker")) || [];
+
+displayTracker();
+
+function addTracker(){
+
+    let batch =
+    document.getElementById("batch").value;
+
+    let experiment =
+    document.getElementById("experiment").value;
+
+    let date =
+    document.getElementById("date").value;
+
+    let status =
+    document.getElementById("status").value;
+
+    if(batch=="" ||
+       experiment=="" ||
+       date=="" ||
+       status==""){
+
+        alert("Fill all fields");
+
+        return;
+
+    }
+
+    trackerData.push({
+
+        batch:batch,
+        experiment:experiment,
+        date:date,
+        status:status
+
+    });
+
+    localStorage.setItem(
+    "tracker",
+    JSON.stringify(trackerData)
+    );
+
+    displayTracker();
+
+}
+
+function displayTracker(){
+
+    let list =
+    document.getElementById("trackerList");
+
+    list.innerHTML = "";
+
+    trackerData.forEach((t,index)=>{
+
+        let statusClass = "";
+
+        if(t.status == "Completed"){
+
+            statusClass = "completed";
+
+        }
+
+        else if(t.status == "Pending"){
+
+            statusClass = "pending";
+
+        }
+
+        list.innerHTML += `
+
+        <div class="track-card">
+
+            <h3>${t.experiment}</h3>
+
+            <p><b>Batch:</b> ${t.batch}</p>
+
+            <p><b>Date:</b> ${t.date}</p>
+
+            <span class="status ${statusClass}">
+
+                ${t.status}
+
+            </span>
+
+            <br>
+
+            <button class="delete-btn"
+            onclick="deleteTracker(${index})">
+
+                Delete
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+function deleteTracker(index){
+
+    trackerData.splice(index,1);
+
+    localStorage.setItem(
+    "tracker",
+    JSON.stringify(trackerData)
+    );
+
+    displayTracker();
+
+}
+
+</script>
+
+</body>
+</html>

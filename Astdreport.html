@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Student Reports</title>
+
+<link rel="stylesheet" href="std.css">
+
+<style>
+
+.report-card{
+    background:white;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:15px;
+}
+
+.report-card h3{
+    margin-bottom:10px;
+}
+
+.report-card p{
+    font-size:14px;
+    margin-bottom:6px;
+    color:#555;
+}
+
+.status{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:8px;
+    font-size:12px;
+    margin-top:10px;
+    background:#e8f5e9;
+    color:#2e7d32;
+}
+
+.pending{
+    background:#fff3cd;
+    color:#856404;
+}
+
+.rejected{
+    background:#ffebee;
+    color:#c62828;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section>
+
+<div>
+
+    <h1>Student Reports</h1>
+
+    <p class="subtitle">
+        View submitted experiment reports
+    </p>
+
+</div>
+
+<!-- REPORT 1 -->
+
+<div class="report-card">
+
+    <h3>Acid Base Titration</h3>
+
+    <p><b>Student:</b> Rahul Sharma</p>
+
+    <p><b>Batch:</b> Batch A1</p>
+
+    <p><b>Date:</b> 2026-05-09</p>
+
+    <p><b>Reading 1:</b> 24.6 ml</p>
+
+    <p><b>Reading 2:</b> 24.8 ml</p>
+
+    <p><b>Observation:</b>
+    End point changed from pink to colorless.
+    </p>
+
+    <span class="status">
+        Approved
+    </span>
+
+</div>
+
+<!-- REPORT 2 -->
+
+<div class="report-card">
+
+    <h3>Water Hardness by EDTA</h3>
+
+    <p><b>Student:</b> Priya Patil</p>
+
+    <p><b>Batch:</b> Batch B1</p>
+
+    <p><b>Date:</b> 2026-05-08</p>
+
+    <p><b>Reading 1:</b> 18.2 ml</p>
+
+    <p><b>Reading 2:</b> 18.5 ml</p>
+
+    <p><b>Observation:</b>
+    Water sample showed temporary hardness.
+    </p>
+
+    <span class="status pending">
+        Pending Review
+    </span>
+
+</div>
+
+<!-- REPORT 3 -->
+
+<div class="report-card">
+
+    <h3>pH Meter Experiment</h3>
+
+    <p><b>Student:</b> Aniket More</p>
+
+    <p><b>Batch:</b> Batch A2</p>
+
+    <p><b>Date:</b> 2026-05-07</p>
+
+    <p><b>Reading 1:</b> pH = 4.5</p>
+
+    <p><b>Reading 2:</b> pH = 4.7</p>
+
+    <p><b>Observation:</b>
+    Sample solution was acidic in nature.
+    </p>
+
+    <span class="status rejected">
+        Needs Correction
+    </span>
+
+</div>
+
+</section>
+
+</body>
+</html>

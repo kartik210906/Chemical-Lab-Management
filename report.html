@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lab Report Generator</title>
+
+<link rel="stylesheet" href="std.css">
+
+<style>
+
+.top-box{
+    background: linear-gradient(to right,#4f46e5,#7c3aed);
+    color:white;
+    padding:22px;
+    border-radius:16px;
+    margin-bottom:20px;
+}
+
+.report-form{
+    background:white;
+    border:1px solid #ddd;
+    border-radius:14px;
+    padding:20px;
+}
+
+.report-form label{
+    font-weight:500;
+}
+
+select,
+input,
+textarea{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    margin-bottom:15px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+
+textarea{
+    height:100px;
+    resize:none;
+}
+
+.generate-btn{
+    background:#4f46e5;
+    color:white;
+    border:none;
+    width:100%;
+    padding:14px;
+    border-radius:10px;
+    cursor:pointer;
+    text-align:center;
+}
+
+.generate-btn:hover{
+    opacity:0.9;
+}
+
+.report-output{
+    margin-top:25px;
+    background:white;
+    border-radius:14px;
+    padding:25px;
+    border:1px solid #ddd;
+    display:none;
+    line-height:1.9;
+}
+
+.report-title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.result-box{
+    background:#f5f5ff;
+    padding:14px;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.result-box h3{
+    margin-bottom:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section>
+
+<div class="top-box">
+
+    <h2>📊 Chemistry Report Generator</h2>
+
+    <p>
+        Generate formatted laboratory reports using experiment readings.
+    </p>
+
+</div>
+
+<div class="report-form">
+
+    <label>Select Experiment</label>
+
+    <select id="experiment" onchange="changeFields()">
+
+        <option value="distillation">
+            Simple Distillation
+        </option>
+
+        <option value="hardness">
+            Water Hardness by EDTA
+        </option>
+
+        <option value="ph">
+            pH Meter Experiment
+        </option>
+
+    </select>
+
+    <input type="text"
+    id="student"
+    placeholder="Student Name">
+
+    <input type="text"
+    id="prn"
+    placeholder="PRN Number">
+
+    <div id="dynamicFields"></div>
+
+    <textarea id="observation"
+    placeholder="Observation"></textarea>
+
+    <button class="generate-btn"
+    onclick="generateReport()">
+
+        Generate Report
+
+    </button>
+
+</div>
+
+<div class="report-output" id="reportOutput">
+
+    <div class="report-title">
+
+        <h2>CHEMISTRY LAB REPORT</h2>
+
+    </div>
+
+    <p>
+        <b>Student Name:</b>
+        <span id="rStudent"></span>
+    </p>
+
+    <p>
+        <b>PRN Number:</b>
+        <span id="rPrn"></span>
+    </p>
+
+    <p>
+        <b>Experiment:</b>
+        <span id="rExperiment"></span>
+    </p>
+
+    <p>
+        <b>Observation:</b>
+        <span id="rObservation"></span>
+    </p>
+
+    <div class="result-box">
+
+        <h3>Result</h3>
+
+        <p id="rResult"></p>
+
+    </div>
+
+</div>
+
+</section>
+
+<script>
+
+changeFields();
+
+function changeFields(){
+
+    let exp =
+    document.getElementById("experiment").value;
+
+    let fields =
+    document.getElementById("dynamicFields");
+
+    if(exp == "distillation"){
+
+        fields.innerHTML = `
+
+        <input type="number"
+        id="acetone"
+        placeholder="Boiling Point of Acetone (°C)">
+
+        <input type="number"
+        id="water"
+        placeholder="Boiling Point of Water (°C)">
+
+        `;
+
+    }
+
+    else if(exp == "hardness"){
+
+        fields.innerHTML = `
+
+        <input type="number"
+        id="edta"
+        placeholder="EDTA Reading (ml)">
+
+        <input type="number"
+        id="hardness"
+        placeholder="Water Hardness (ppm)">
+
+        `;
+
+    }
+
+    else if(exp == "ph"){
+
+        fields.innerHTML = `
+
+        <input type="number"
+        id="equivalence"
+        placeholder="Equivalence Point (ml)">
+
+        <input type="number"
+        id="pka"
+        placeholder="pKa Value">
+
+        `;
+
+    }
+
+}
+
+function generateReport(){
+
+    let exp =
+    document.getElementById("experiment").value;
+
+    let expName =
+    document.getElementById("experiment")
+    .options[
+    document.getElementById("experiment")
+    .selectedIndex].text;
+
+    let student =
+    document.getElementById("student").value;
+
+    let prn =
+    document.getElementById("prn").value;
+
+    let observation =
+    document.getElementById("observation").value;
+
+    document.getElementById("reportOutput")
+    .style.display = "block";
+
+    document.getElementById("rStudent")
+    .innerText = student;
+
+    document.getElementById("rPrn")
+    .innerText = prn;
+
+    document.getElementById("rExperiment")
+    .innerText = expName;
+
+    document.getElementById("rObservation")
+    .innerText = observation;
+
+    let result = "";
+
+    if(exp == "distillation"){
+
+        let acetone =
+        document.getElementById("acetone").value;
+
+        let water =
+        document.getElementById("water").value;
+
+        result = `
+        <b>Boiling Point of Acetone:</b>
+        ${acetone} °C <br>
+
+        <b>Boiling Point of Water:</b>
+        ${water} °C <br><br>
+
+        The mixture was successfully separated
+        using simple distillation.
+        `;
+
+    }
+
+    else if(exp == "hardness"){
+
+        let edta =
+        document.getElementById("edta").value;
+
+        let hard =
+        document.getElementById("hardness").value;
+
+        result = `
+        <b>EDTA Reading:</b>
+        ${edta} ml <br>
+
+        <b>Total Hardness:</b>
+        ${hard} ppm <br><br>
+
+        Total hardness of water sample was
+        determined successfully.
+        `;
+
+    }
+
+    else if(exp == "ph"){
+
+        let eq =
+        document.getElementById("equivalence").value;
+
+        let pka =
+        document.getElementById("pka").value;
+
+        result = `
+        <b>Equivalence Point:</b>
+        ${eq} ml <br>
+
+        <b>pKa Value:</b>
+        ${pka} <br><br>
+
+        Dissociation constant of weak acid
+        was determined successfully.
+        `;
+
+    }
+
+    document.getElementById("rResult")
+    .innerHTML = result;
+
+}
+
+</script>
+
+</body>
+</html>
